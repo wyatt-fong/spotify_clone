@@ -1,0 +1,14 @@
+.main-nav {
+    display:flex;
+    margin: 10px;
+    border-radius: 10px;
+    background: rgb(18, 18, 18);
+    align-items: center;
+    height: 11.5%;
+}
+
+.text {
+    text-align: left;
+    font-size: 80%;
+    padding-left: 20px;
+}

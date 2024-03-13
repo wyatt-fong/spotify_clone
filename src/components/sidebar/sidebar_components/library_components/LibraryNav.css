@@ -1,0 +1,48 @@
+.libraryNav {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 10px;
+    height: 90px;
+}
+
+.libraryHead {
+    grid-row-start: 1;
+    display: flex;
+    align-items: center;
+    font-size: 80%;
+    white-space: nowrap;
+}
+
+.icons {
+    grid-row-start:1;
+    grid-column-start: 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space out the h2 elements */
+
+    h2 {
+        margin: 15px;
+    }
+}
+
+.subCat {
+    grid-row-start:2;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    display: flex;
+    justify-content: flex-start;
+
+    button {
+        display: inline-block;
+        border-radius: 20px;
+        border: none;
+        background: rgb(44, 44, 44);
+        color:white;
+        margin: 5px;
+        padding: 8px;
+        cursor: pointer;
+        min-width: 69px;
+        max-height: 30px; 
+    }
+}
