@@ -45,4 +45,8 @@
         min-width: 69px;
         max-height: 30px; 
     }
+
+    button:hover{
+        background: rgb(48, 48, 48);
+    }
 }

@@ -1,0 +1,13 @@
+.iconShortcuts{
+    display: flex;
+    font-size: 70%;
+    padding: 10px;
+    width: 95%;
+    height:20px;
+    justify-content: flex-start;
+    align-items: center;
+    
+    #recents {
+        margin-left: auto;
+    }
+}
