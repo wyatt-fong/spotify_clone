@@ -2,11 +2,20 @@ import './HomeSearchToggle.css';
 function HomeSearchToggle() {
     return (
         <div className="main-nav">
-            <div class="text">
-                <h2><b>**___Home</b></h2>
-                <h2><b>**___Search</b></h2>
-            </div>
-            
+            <ul> 
+                <li style={{paddingBottom: 8, paddingTop: 10}}>
+                    <a href='./'>
+                        <button>S</button> {/* Delete later to add symbol */}
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li style={{paddingTop: 12}}>
+                    <a href='./'>
+                        <button>S</button> {/* Delete later to add symbol */}
+                        <span>Search</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     )
 }

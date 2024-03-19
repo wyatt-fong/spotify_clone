@@ -3,8 +3,10 @@ import './LibraryShortcuts.css';
 function LibraryShortcuts() {
     return (
         <div className="iconShortcuts">
-            <h2>**</h2>
-            <h2 id='recents'>Recents **</h2>
+            <button>
+                <span>S</span> {/* Delete later to add symbol */}
+            </button>
+            <button id='recents'>Recents <span>S</span></button>
         </div>
     );
 }

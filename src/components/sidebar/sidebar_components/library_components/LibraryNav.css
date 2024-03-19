@@ -1,47 +1,74 @@
 .libraryNav {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 10px;
-    height: 90px;
+    display: flex;
+    flex-direction: column;
+    height: 104px;
+    border-radius: 10px;
+
 }
+
+header {
+    max-height: 56px;
+    padding: 8px 16px;
+}   
 
 .libraryHead {
     grid-row-start: 1;
     display: flex;
+    justify-content: flex-end;
     align-items: center;
-    font-size: 80%;
     white-space: nowrap;
+    height: 40px;
+
+    div {
+        margin-right: auto;
+        height: inherit;
+
+        button {
+            padding: 4px 8px;
+            max-width: 142.1px;
+            height: inherit;
+            display: flex;
+            align-items: center;
+
+            span {
+                align-items: center;
+                width: 24px;
+                height: 24px;
+                margin-right: 8px;
+            }
+        }
+    }
 }
 
-.icons {
-    grid-row-start:1;
-    grid-column-start: 4;
+.icon {
+    font-size: 16px;
+    font-family: inherit;
+    width: 32px;
+    height: 32px;
+    padding: 8px;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Space out the h2 elements */
 
-    h2 {
-        margin: 15px;
+    span {
+        width: 100%;
+        height: 100%;
     }
 }
 
 .subCat {
-    grid-row-start:2;
+    grid-row-start: 2;
     grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column-end: 3;
     display: flex;
     justify-content: flex-start;
-
+    height: 48px;
+    padding: 0 0 0 12px;
     button {
-        display: inline-block;
+        justify-content: center;
         border-radius: 20px;
-        border: none;
         background: rgb(44, 44, 44);
-        color:white;
-        margin: 5px;
-        padding: 8px;
-        cursor: pointer;
+        margin: 10px 3px;
+        padding: 5px;
         min-width: 69px;
         max-height: 30px; 
     }
@@ -49,4 +76,9 @@
     button:hover{
         background: rgb(48, 48, 48);
     }
+}
+
+button > span {
+    font-size: smaller;
+    font-family: 'CircularSP', sans-serif;
 }

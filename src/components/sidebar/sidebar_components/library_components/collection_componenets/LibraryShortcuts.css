@@ -2,12 +2,25 @@
     display: flex;
     font-size: 70%;
     padding: 10px;
-    width: 95%;
+    width: 90%;
     height:20px;
     justify-content: flex-start;
     align-items: center;
+
+    button {
+        margin-left: 10px;
+    }
     
     #recents {
         margin-left: auto;
     }
+}
+
+button {
+    opacity: 70%;
+    font-weight: bold;
+}
+
+button:hover {
+    opacity: 100%;
 }

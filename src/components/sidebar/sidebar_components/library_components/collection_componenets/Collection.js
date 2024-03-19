@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import CollectionContext from '../sampleData/collections';
+import CollectionContext from '../../../../sampleData/sampleData';
 import './Collection.css';
 
 function Collection() {
@@ -7,7 +7,7 @@ function Collection() {
     
     return (
         <div className='container'>
-            <img id='image' src={collection.image} alt={collection.name} />
+            <img id='libImage' src={collection.image} alt={collection.name} />
             <div className='details'>
                 <h2>{collection.name}</h2>
                 <p>{collection.artists}</p>

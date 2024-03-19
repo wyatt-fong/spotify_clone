@@ -1,0 +1,5 @@
+.collectionContainer {
+    height: 130%;
+    overflow: hidden;
+    overflow-y: scroll;
+}

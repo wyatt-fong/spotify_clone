@@ -6,9 +6,9 @@ const CollectionContext = createContext();
 
 // Define the initial value of the context (your collection object)
 const collection = {
-  name: 'Filler',
-  image: 'https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228',
-  artists: 'Playlist - You'
+  name: 'Lorem ipsum',
+  image: require('./playlistFiller.png'),
+  artists: 'Lorem ipsum dolor sit amet'
 };
 
 // Create a provider component for the context
