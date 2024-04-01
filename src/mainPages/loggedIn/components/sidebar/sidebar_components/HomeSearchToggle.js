@@ -3,7 +3,7 @@ function HomeSearchToggle() {
     return (
         <div className="main-nav">
             <ul> 
-                <li style={{paddingBottom: 8, paddingTop: 10}}>
+                <li style={{paddingBottom: 5, paddingTop: 10}}>
                     <a href='./'>
                         <button>S</button> {/* Delete later to add symbol */}
                         <span>Home</span>

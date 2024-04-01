@@ -1,14 +1,15 @@
 .container {
     display: flex;
-    margin: 10px;
-    height: 65px;
-    border-radius: 12px;
+    margin: 0 0 0 10px;
+    height: 63px;
+    border-radius: 8px;
     cursor: pointer;
     align-items: center;
+    color: white;
 }
 
 .container:hover {
-    background: rgb(54, 54, 54);
+    background: rgb(25, 25, 25);
 }
 
 #libImage {
@@ -28,9 +29,10 @@
     h2 {
         grid-column-start: 1;
         grid-row-start: 1;
-        font-size: 115%;
+        font-size: 100%;
         margin-bottom: 2.5px;
         justify-self: left;
+        text-wrap:nowrap;
     }
 
     p {
