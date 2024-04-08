@@ -1,0 +1,44 @@
+
+.ms-header {
+    display: flex;
+    height: 8%;
+    padding: 12px;
+    position: static;
+}
+
+.center {
+    display: flex;
+    color: white;
+    background:  rgb(32, 32, 32);
+    border-style: none;
+    border-color: white;
+    border-width: 1px;
+    border-radius: 50%;
+    padding: 5px;
+    margin: 5px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#logout {
+    display: flex;
+    width: fit-content;
+    border-radius: 10px;
+    color: white;
+    background:  rgb(32, 32, 32);
+    border-style: none;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: 5px 0 0 0;
+    h4 {
+        margin: 0 0 0 5px;
+        padding: 0;
+    }
+}
+
+#slamRight {
+    margin-left: auto;
+    display: flex;
+}

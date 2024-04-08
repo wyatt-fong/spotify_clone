@@ -1,8 +1,8 @@
 .MainPage {
     margin: 0;
     display: grid;
-    grid-template-columns: 1.15fr 4fr; 
-    grid-template-rows: 86% 14%;
+    grid-template-columns: 1.35fr 4fr; 
+    grid-template-rows: 90% 10%;
     grid-gap: 10px;
     height: 100vh;
     color: white;
@@ -10,9 +10,9 @@
     background-color: black;
     overflow: hidden;
 
-    button {
+    .btn {
         background: inherit;
-        border: none;
+        border-style: none;
         color: inherit;
         cursor: pointer;
     }

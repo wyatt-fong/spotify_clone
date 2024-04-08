@@ -1,9 +1,9 @@
 import './Collection.css';
 
 function Collection(props) {
-    const {item} = props;
+    const {item, onClick} = props;
     return (
-        <div className='container'>
+        <div onClick={() => onClick(item)} className='container'>
             <img id='libImage' src={item.images[0].url} alt={item.name} />
             <div className='details'>
                 <h2>{item.name}</h2>

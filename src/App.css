@@ -6,6 +6,7 @@
     height: 100vh;
     width: 100vw;
     color : white;
+
     button {
         display: flex;
         border-color: gray;
@@ -16,9 +17,16 @@
         height: 50px;
         justify-content: center;
         align-items: center;
+        border-style: solid;
     }
 
     button:hover {
         border-color: white;
     }
+}
+
+.bold-icon {
+    font-weight: bold;
+    width: 16px;
+    height: 16px;
 }

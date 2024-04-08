@@ -1,6 +1,7 @@
 import Collection from './Collection';
 import axios from 'axios';
 import {useState, useEffect} from 'react'
+import { usePlaylistSetter } from '../../../../../PlaylistSetter';
 
 const PLAYLIST_ENDPOINT = "https://api.spotify.com/v1/me/playlists";
 
@@ -20,8 +21,6 @@ function LibraryContents() {
         }
     },[token])
 
-    
-
     const handleGetPlaylists = () => {
         axios.get(PLAYLIST_ENDPOINT, {
             headers: {
@@ -37,11 +36,17 @@ function LibraryContents() {
         });
     };
 
+    const {choosePlaylist} = usePlaylistSetter();
+
+    const setPlaylist = (item) => {
+        choosePlaylist(item);
+    }
+
     return (
         <div>
         {
             data?.items ? data.items.map((item) =>
-            <Collection item = {item} />) : null    
+            <Collection onClick = {() => setPlaylist(item)} key={item.id} item = {item} />) : null    
         }
         </div>
     );

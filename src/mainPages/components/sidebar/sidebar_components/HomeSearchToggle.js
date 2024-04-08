@@ -1,19 +1,20 @@
 import './HomeSearchToggle.css';
+import {HouseFill, Search} from 'react-bootstrap-icons'
 function HomeSearchToggle() {
     return (
         <div className="main-nav">
             <ul> 
                 <li style={{paddingBottom: 5, paddingTop: 10}}>
-                    <a href='./'>
-                        <button>S</button> {/* Delete later to add symbol */}
+                    <div className='choice'>
+                        <button className='btn'><HouseFill /></button> {/* Delete later to add symbol */}
                         <span>Home</span>
-                    </a>
+                    </div>
                 </li>
                 <li style={{paddingTop: 12}}>
-                    <a href='./'>
-                        <button>S</button> {/* Delete later to add symbol */}
+                    <div className='choice'>
+                        <button className='btn'><Search/></button> {/* Delete later to add symbol */}
                         <span>Search</span>
-                    </a>
+                    </div>
                 </li>
             </ul>
         </div>

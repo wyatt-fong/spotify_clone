@@ -1,4 +1,4 @@
-import LoggedInPage from './mainPages/loggedIn/LoggedInPage.js';
+import LoggedInPage from './mainPages/LoggedInPage.js';
 import React, {useState, useEffect} from 'react';
 import './App.css';
 
@@ -44,7 +44,6 @@ function App() {
             ) : (
                 <div>
                     <LoggedInPage logout = {logout}/>
-                    {/* <button onClick = {logout} style={{background:"white"}}></button> */}
                 </div>
             )
             }

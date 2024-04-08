@@ -1,0 +1,42 @@
+.iconShortcuts{
+    display: flex;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    width: 95%;
+    height:20px;
+    justify-content: flex-start;
+    align-items: center;
+
+    button {
+        margin-left: 10px;
+    }
+    
+}
+
+#recents {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    height: 32px;
+    width: 100px;
+    text-wrap: nowrap;
+    margin: 0 0 0 auto;
+    font-size: 14px;
+
+    span {
+        margin: 0 5px 0 0;
+    }
+}
+
+button {
+    opacity: 70%;
+    font-weight: 400;
+    width: 32px;
+    height: 32px;
+}
+
+button:hover {
+    opacity: 100%;
+}
