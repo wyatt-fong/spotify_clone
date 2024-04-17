@@ -5,8 +5,9 @@ const PlaylistSetter = createContext();
 
 
 export const PlaylistSetterProvider = ({children}) => {
-    const [playlist, setPlaylist] = useState({});
+    const [playlist, setPlaylist] = useState(null);
 
+    
     const choosePlaylist = (item) => {
         setPlaylist(item);
     }

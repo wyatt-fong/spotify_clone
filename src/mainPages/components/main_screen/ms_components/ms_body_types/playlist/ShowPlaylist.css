@@ -1,0 +1,140 @@
+.playlist-container {
+    height:103%;
+    overflow:hidden;
+    overflow-y: scroll;
+}
+
+.playlist-img {
+    height: 232px;
+    width : 232px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.1);
+}
+
+.playlist-header {
+    display: flex;
+    align-items: center;
+    padding-left: 24px;
+}
+
+.ph-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+
+span {
+    font-size: 14px;
+    font-weight: 500;
+    height: 19px;
+    padding-left: 2px;
+}
+
+h1 {
+    font-size: 64px;
+    margin: 0;
+    height: 96px;
+}
+
+.specifics {
+    display: flex;
+    align-items: flex-end;
+    height: 24px;
+    padding-left: 2px;
+}
+
+p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: medium;
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    opacity: 1;
+    width:fit-content;
+    height: fit-content;
+    background: inherit;
+}
+
+.flexbox {
+    display: flex;
+    align-items: center;
+}
+
+.labels {
+    display: flex;
+    width: 92%;
+    margin-left: 40px; 
+    color: rgb(179, 178, 178);
+    border-bottom: 0.5px solid rgba(179, 178, 178, 0.5); /* You can adjust the width and color as needed */
+    padding-bottom: 10px; 
+    font-weight: bolder;
+
+    span {
+        padding: 0;
+    }
+}
+
+#outter {
+    padding: 24px;
+}
+
+#circleFill {
+    color: #1ed760;
+    opacity: 1;
+    width: 56px;
+    height: 56px;
+}
+
+#circleFill:hover {
+    width: 58px;
+    height: 58px;
+}
+
+#dots {
+    color: rgb(179, 178, 178);
+    font-size: 24px;
+    margin-left: 24px;
+}
+
+#dots:hover {
+    color: white;
+    font-size: 26px;
+}
+
+#list {
+    display: flex;
+    color: rgb(179, 178, 178);
+    margin: 0 0 0 auto;
+    padding: 0;
+    align-items: center;
+}
+
+#list:hover {
+    color: white; 
+   
+}
+
+#ownrPfp {
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    object-fit: cover;
+    margin-right: 4px;
+}
+
+#list-icon {
+    padding: 0 0 0 0;
+    margin: 0 0 0 5px;
+    font-size: 20px;
+}
+
+#songs {
+    padding-top: 16px;
+}

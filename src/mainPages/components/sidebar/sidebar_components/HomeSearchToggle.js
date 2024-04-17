@@ -1,12 +1,19 @@
+import { usePlaylistSetter } from '../../../PlaylistSetter';
 import './HomeSearchToggle.css';
 import {HouseFill, Search} from 'react-bootstrap-icons'
 function HomeSearchToggle() {
+
+    const {choosePlaylist} = usePlaylistSetter();
+    const handleClick = () => {
+        choosePlaylist(null);
+    }
+    
     return (
         <div className="main-nav">
             <ul> 
                 <li style={{paddingBottom: 5, paddingTop: 10}}>
                     <div className='choice'>
-                        <button className='btn'><HouseFill /></button> {/* Delete later to add symbol */}
+                        <button className='btn' onClick={handleClick}><HouseFill /></button> {/* Delete later to add symbol */}
                         <span>Home</span>
                     </div>
                 </li>

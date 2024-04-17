@@ -1,7 +1,7 @@
 
 .ms-header {
     display: flex;
-    height: 8%;
+    height: 6%;
     padding: 12px;
     position: static;
 }
@@ -41,4 +41,12 @@
 #slamRight {
     margin-left: auto;
     display: flex;
+    align-items: center;
+}
+
+#pfp {
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    object-fit: cover;
 }
