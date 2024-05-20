@@ -1,8 +1,6 @@
 import { ArrowLeft, ArrowRight, Bell, DoorClosed} from 'react-bootstrap-icons';
-import axios from 'axios'
 import './MSHeader.css'
 import { useEffect, useState } from 'react';
-
 
 function MSHeader({logout}) {
     
@@ -10,17 +8,19 @@ function MSHeader({logout}) {
     const token = window.localStorage.getItem("token") ? window.localStorage.getItem("token") : null;
 
     useEffect(() => {
-        axios.get("https://api.spotify.com/v1/me", {
+        fetch("https://api.spotify.com/v1/me", {
             headers: {
-                'Authorization' : `Bearer ${token}`
+                Authorization : `Bearer ${token}`
             }
+        }).then((res) => {
+            return res.json();
         })
-        .then(response => setProfile(response.data))
-        .catch(error => console.log(error))
-    }, [])
+        .then((data) => {
+            setProfile(data);
+        })
+    }, []);
 
-
-    const img = profile && profile.images[0] && profile.images[0].url ? profile.images[0].url : null;
+    const img = profile && profile?.images[0] && profile?.images[0]?.url ? profile?.images[0]?.url : null;
     return (
         <div className='ms-header'>
             <button className='center'>
@@ -29,7 +29,7 @@ function MSHeader({logout}) {
             <button className='center'>
                 <ArrowRight/>
             </button>
-            <div id="slamRight">
+            <span id="slamRight">
                 <button id="logout"onClick={() => logout()}> 
                     <DoorClosed/> <h4>Logout</h4>
                 </button>
@@ -39,7 +39,7 @@ function MSHeader({logout}) {
                 <button className='center' style={{overflow:'hidden'}}>
                     <img id = "pfp" src={img} alt="PFP"></img>
                 </button>
-            </div>
+            </span>
         </div>
     );
 }

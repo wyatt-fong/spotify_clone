@@ -2,7 +2,5 @@
     font-size:smaller;
     text-align: center;
     grid-row-start: 1;
-    min-width: 100px;
-    max-width: 100%;
-    
+    width: 100%;   
 }

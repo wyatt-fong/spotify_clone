@@ -4,40 +4,53 @@ import { usePlaylistSetter } from '../../../../../PlaylistSetter';
 import { useProfileContext } from '../../../../../ProfileContext';
 import { Dot, PlayCircleFill, ThreeDots, ListUl, Clock, Hash} from 'react-bootstrap-icons';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function ShowPlaylist() {
 
     const {playlist} = usePlaylistSetter() || {};
     const { profile, getProfile } = useProfileContext() || {};
-    const [loading, setLoading] = useState(true);
     
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                if (playlist) {
-                    const id = playlist.owner?.id;
-                    if (id) {
-                        await getProfile(id);
+        if (playlist) {
+            const fetchData = async () => {
+                try {
+                    if (playlist) {
+                        const id = playlist.owner?.id;
+                        if (id) {
+                            await getProfile(id);
+                        }
                     }
+                } catch (error) {
+                    console.log(error);
+                } 
+            };
+            fetchData();
+        }
+    }, [playlist]);
+
+    const [songs, setSongs] = useState([]);
+    const token = window.localStorage.getItem("token");
+
+    const href = playlist?.tracks.href;
+
+    useEffect(() => {
+        if (playlist){
+            axios.get(href, {
+                headers: {
+                    Authorization: "Bearer " + token
                 }
-            } catch (error) {
-                console.log(error);
-            } finally {
-                setLoading(false);
-            }
-            
-        };
-        fetchData();
-    }, [playlist]);    
+            }).then((response) => {
+                setSongs(response.data);
+            }).catch ((error) => {console.log(error);
+            });  
+        }
+    },[playlist, href, token])
 
-    if (loading ) {
-        return (<>Loading...</>);
-    }
-
-    const playlistImage = playlist.images && playlist.images.length > 0 ? playlist.images[0].url : null;
-    const profileImage = profile.images && profile.images.length > 0 ? profile.images[0].url : null;
-    const displayName = playlist.owner && playlist.owner.display_name ? playlist.owner.display_name : null;
-    const total = (playlist.tracks && playlist.tracks.total) ? playlist.tracks.total : null;
+    const playlistImage = playlist?.images && playlist.images.length > 0 ? playlist.images[0].url : null;
+    const profileImage = profile?.images && profile.images?.length > 0 ? profile.images[0].url : null;
+    const displayName = playlist?.owner && playlist.owner?.display_name ? playlist.owner.display_name : null;
+    const total = (playlist?.tracks && playlist.tracks.total) ? playlist.tracks.total : null;
     const playlistOwnerPFP = profileImage ? <img id="ownrPfp" src={profileImage} alt="pfp"></img> : null;
     
 
@@ -47,7 +60,7 @@ function ShowPlaylist() {
                 <img src={playlistImage} alt='Playlist Img' className='playlist-img'></img>
                 <div className='ph-details'>
                     <span>Playlist</span>
-                    <h1>{playlist.name}</h1>
+                    <h1 style={{fontWeight:'bold'}}>{playlist?.name}</h1>
                     <div className='specifics'>
                         {playlistOwnerPFP}
                         <span style={{fontWeight:'bold'}}>{displayName}</span> 
@@ -72,13 +85,13 @@ function ShowPlaylist() {
             </div>
             <div className='labels'>
                 <span style={{width: '3%', marginLeft:'10px'}}><Hash/></span>
-                <div className='flexbox' style={{width: '40%'}}>
+                <div className='flexbox' style={{width: '39.5%'}}>
                     <span style={{margin:'0 auto 0 0', fontWeight:'bold'}}>Title</span>
                 </div>
-                <div className='flexbox' style={{width: '27%'}}>
+                <div className='flexbox' style={{width: '28.5%'}}>
                     <span style={{margin:'0 auto 0 0', fontWeight:'bold'}}>Album</span>
                 </div>
-                <div className='flexbox' style={{width: '27%'}}>
+                <div className='flexbox' style={{width: '25%'}}>
                     <span style={{margin:'0 auto 0 0', fontWeight:'bold'}}>Date Added</span>
                 </div>
                 <div className='flexbox'>
@@ -86,7 +99,7 @@ function ShowPlaylist() {
                 </div>
             </div>
             <div id="songs">
-                <PlaylistSongs/>
+                <PlaylistSongs props={songs}/>
             </div>
         </div>
     );

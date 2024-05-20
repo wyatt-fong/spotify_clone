@@ -1,22 +1,24 @@
 import './MSBody.css';
 import { usePlaylistSetter } from '../../../PlaylistSetter';
-import React, { lazy, useEffect, useState } from 'react';
+import { useDisplaySetter } from '../../../DisplaySetter';
+import React, { lazy, useEffect } from 'react';
 const ShowPlaylist = lazy(() => import('./ms_body_types/playlist/ShowPlaylist'));
 
 function MSBody() {
 
     const {playlist} = usePlaylistSetter() || {};
-    const [toDisplay, setToDisplay] = useState(<p>Loading...</p>);
+
+    const {display, chooseDisplay} = useDisplaySetter();
     
-    useEffect(() => {   
-        if (playlist != null) {
-            setToDisplay(<ShowPlaylist/>);
+    useEffect(() => {
+        if (playlist) {
+            chooseDisplay(<ShowPlaylist/>)
         }
     }, [playlist]);
     
     return (
         <div className='ms-body'>
-            {toDisplay}
+            {display}
         </div>
     );
 }

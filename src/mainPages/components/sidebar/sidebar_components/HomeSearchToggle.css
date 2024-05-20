@@ -29,6 +29,7 @@ li {
     color: white;
     width: 90%;
     opacity: 70%;
+    cursor: pointer;
 
     span { 
         font-size: 18px;
@@ -46,6 +47,5 @@ li {
 
 .choice:hover {
     opacity: 100%;
-    
 }
 

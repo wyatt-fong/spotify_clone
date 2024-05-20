@@ -1,7 +1,7 @@
 
 .ms-header {
     display: flex;
-    height: 6%;
+    height: 4%;
     padding: 12px;
     position: static;
 }
@@ -9,7 +9,7 @@
 .center {
     display: flex;
     color: white;
-    background:  rgb(32, 32, 32);
+    background:  rgb(24, 24, 24);
     border-style: none;
     border-color: white;
     border-width: 1px;

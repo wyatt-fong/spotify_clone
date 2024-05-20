@@ -2,8 +2,9 @@ import Collection from './Collection';
 import axios from 'axios';
 import {useState, useEffect} from 'react'
 import { usePlaylistSetter } from '../../../../../PlaylistSetter';
+import { useDisplaySetter } from '../../../../../DisplaySetter';
 
-const PLAYLIST_ENDPOINT = "https://api.spotify.com/v1/me/playlists";
+const PLAYLIST_ENDPOINT = "https://api.spotify.com/v1/users/minifong/playlists";
 
 function LibraryContents() {
     const [token, setToken] = useState("");
@@ -37,6 +38,8 @@ function LibraryContents() {
     };
 
     const {choosePlaylist} = usePlaylistSetter();
+
+    const {chooseDisplay}  = useDisplaySetter();
 
     const setPlaylist = (item) => {
         choosePlaylist(item);

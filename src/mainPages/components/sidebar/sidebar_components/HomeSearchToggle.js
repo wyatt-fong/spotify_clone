@@ -1,24 +1,34 @@
-import { usePlaylistSetter } from '../../../PlaylistSetter';
 import './HomeSearchToggle.css';
-import {HouseFill, Search} from 'react-bootstrap-icons'
+import Home from '../../main_screen/ms_components/ms_body_types/home/Home.js'
+import SearchPage from '../../main_screen/ms_components/ms_body_types/search/SearchPage.js';
+import { HouseFill, Search} from 'react-bootstrap-icons'
+import { useDisplaySetter } from '../../../DisplaySetter';
+import { usePlaylistSetter } from '../../../PlaylistSetter.js';
 function HomeSearchToggle() {
-
+    const {chooseDisplay} = useDisplaySetter();
     const {choosePlaylist} = usePlaylistSetter();
-    const handleClick = () => {
+
+    const goHome = () => {
+        chooseDisplay(<Home/>);
         choosePlaylist(null);
     }
     
+    const goSearch= () => {
+        chooseDisplay(<SearchPage/>);
+        choosePlaylist(null);
+    }
+
     return (
         <div className="main-nav">
             <ul> 
                 <li style={{paddingBottom: 5, paddingTop: 10}}>
-                    <div className='choice'>
-                        <button className='btn' onClick={handleClick}><HouseFill /></button> {/* Delete later to add symbol */}
+                    <div className='choice' onClick={goHome}>
+                        <button className='btn'><HouseFill /></button> {/* Delete later to add symbol */}
                         <span>Home</span>
                     </div>
                 </li>
                 <li style={{paddingTop: 12}}>
-                    <div className='choice'>
+                    <div className='choice' onClick={goSearch}>
                         <button className='btn'><Search/></button> {/* Delete later to add symbol */}
                         <span>Search</span>
                     </div>

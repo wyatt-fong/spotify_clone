@@ -1,0 +1,44 @@
+.searchContainer {
+    overflow-y: scroll;
+    height: 105%;
+    display: flex;
+    flex-direction: column;
+}
+
+.searchBar {
+    height: 5%;
+    display: flex;
+    align-items: center;
+}
+
+.textInput {
+    width: 95%;
+    max-height: 100%;
+    margin: 0 0 0 10px;
+    background:  rgb(36, 36, 36);
+    border: none;
+    font-size: 1rem;
+    border-radius: 8px;
+    outline: none;
+    padding: 8px;
+    color: white;
+}
+
+.textInput:hover {
+    box-shadow: 0 0 0 1px #d2d2d2bf;
+}
+
+.textInput:focus {
+    box-shadow: 0 0 0 1.5px white;
+}
+
+input[type="text"]::placeholder {
+    color: gray;
+}
+
+.searchIcon {
+    color: white;
+    font-size: 1.1rem;
+    padding: 0.7rem 1.5rem;
+    border-radius: 0.3rem;
+}

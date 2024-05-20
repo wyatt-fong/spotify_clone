@@ -1,59 +1,58 @@
-.song-container {
+.pushRight {
+    margin: 0 30px 0 auto;
+    text-align: right;
+    justify-self: end;
+}
+
+.song-cont {
     display: flex;
     align-items: center;
     height: 54px;
     border-radius: 4px;
+    width: calc(100% - 24px);
+    min-width: 70%;
+    margin: 0 0 0 24px;
+    font-weight: 500;  
 }
 
-.song-container:hover {
+.song-cont:hover {
     background: rgb(58, 58, 58);
 
-    #info {
+    #info, #ct {
         color: white;
     }
 }
 
-#ct-container {
-    display: flex;
-    justify-content: center;
-    width: 83px;  
-}
-
-#ct {
-    padding: 0 10px 0 40px;
-    font-weight: bolder;
-    color: rgb(179, 178, 178);
-}
-
-#song-abs {
+#song-abstr {
     display: flex;
     align-items: center;
-    width: 35%;
-    padding: 0 16px 0 0;
+    width: 60%;
+    padding: 0 12px 0 0;
     
     img {
         width: 40px;
         height: 40px;
         border-radius: 4px;
-        margin: 0 12px 0 0;
+        margin: 0 12px 0 10px;
     }
 
-    #info {
+    #song_det {
         display: grid;
         width: 100%;
         align-items: flex-start;
 
         p {
-            width:100%;
+            width:calc(80% - 2px);
             font-size: 15px;
             padding: 0 0 2px 0;
             white-space: nowrap; 
             overflow: hidden;
             text-overflow: ellipsis;
             color: white;
+            margin: 0;
         }
         span {
-            width: 100%;
+            width: calc(80% - 2px);
             display: flex;
             align-items: center;
             font-size: 13px;
@@ -61,31 +60,33 @@
             white-space: nowrap; 
             overflow: hidden;
             text-overflow: ellipsis;
+            color: rgb(175, 174, 174);
         }
     }
 }
 
+.songLength {
+    width: 100%; 
+    font-size: 14px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: rgb(179, 178, 178);   
+}
 
 
-#song-albm {
+
+#song-alb {
     display:flex;
     align-items: center;
     width: 25%;
     padding: 0 16px 0 0;
 
-}
-
-#date-add {
-    display: flex;
-    width: 22.5%;
-    align-items: center;
-}
-
-#info {
-    width: 100%;
-    font-size: 13px;
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: rgb(179, 178, 178);   
+    span {
+        font-size: 13px;
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: rgb(179, 178, 178);   
+    }
 }

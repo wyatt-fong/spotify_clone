@@ -1,0 +1,63 @@
+.album-container {
+    width: 100%;
+    overflow-x: hidden; 
+}
+
+.albumCard {
+    display: flex;
+    width: 225px;
+    height: 250px;
+    flex-direction: column;
+    background: inherit;
+    align-items: center;
+    text-overflow: ellipsis;
+    margin: 5px;
+
+    span {
+        width: 100%;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+.albumCard:hover {
+    background: rgb(25, 25, 25);
+}
+
+.albumImg {
+    width: 190px;
+    height: 190px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.albums {
+    display: flex;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    margin: 0 5px 0 5px;
+}
+
+#albumDetails {
+    color: rgb(138, 138, 138);
+    padding: 2.5px 5px;
+    font-size: 14px;
+    align-self: baseline;
+    font-weight: 200;
+    width: 100%;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+#albumTtle {
+    padding: 2.5px 5px;
+    width: 100%;
+    font-size: 16px;
+    align-self: baseline;
+    font-weight: 400;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}

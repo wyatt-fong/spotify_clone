@@ -3,6 +3,7 @@ import MainScreen from './components/main_screen/MainScreen';
 import './LoggedInPage.css';
 import { PlaylistSetterProvider } from './PlaylistSetter';
 import { ProfileContextProvider } from './ProfileContext';
+import { DisplaySetterProvider } from './DisplaySetter';
 
 // Reminder to try and implement the logout button somewhere
 
@@ -10,10 +11,12 @@ function LoggedInPage({logout}) {
     return (
         <div className="MainPage">
             <PlaylistSetterProvider>
-                <ProfileContextProvider>
-                    <SideBar />
-                    <MainScreen logout = {logout}/>
-                </ProfileContextProvider>
+                <DisplaySetterProvider>
+                    <ProfileContextProvider>
+                        <SideBar />
+                        <MainScreen logout = {logout}/>
+                    </ProfileContextProvider>
+                    </DisplaySetterProvider>
             </PlaylistSetterProvider>
         </div>
     );
