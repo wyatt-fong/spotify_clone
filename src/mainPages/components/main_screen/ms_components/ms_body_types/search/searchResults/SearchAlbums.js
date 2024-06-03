@@ -3,7 +3,6 @@ import { Dot } from 'react-bootstrap-icons';
 
 function SearchAlbums(props) {
     const albums = props.props;
-    console.log(albums);
 
     const albumItems = albums?.items ? albums.items.map((item) => {
         const albumArtist = item?.artists[0]?.name ? item.artists[0].name: "";
@@ -22,7 +21,7 @@ function SearchAlbums(props) {
     }) : null;
 
     return (
-        <div className="album-container">
+        <div className="s-album-container">
             <h2 className='searchTitle'>Album</h2>
             <div className="albums">
                 {albumItems}

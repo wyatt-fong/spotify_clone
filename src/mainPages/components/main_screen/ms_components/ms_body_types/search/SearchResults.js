@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './SearchResults.css';
 import SearchTracks from './searchResults/SearchTracks';
 import SearchAlbums from './searchResults/SearchAlbums';
+import SearchArtists from './searchResults/SearchArtists';
 
 function SearchResults() {
     const searchBar = document.getElementById("searchInput"); // Holds the input value to send to API
@@ -36,6 +37,7 @@ function SearchResults() {
     return (
         <div className='search-results'>
             <SearchTracks props={tracks}/>
+            <SearchArtists props={artists}/>
             <SearchAlbums props={albums}/> 
         </div>
     );

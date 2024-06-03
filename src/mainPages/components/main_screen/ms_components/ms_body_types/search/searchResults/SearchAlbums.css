@@ -1,6 +1,7 @@
-.album-container {
+.s-album-container {
     width: 100%;
-    overflow-x: hidden; 
+    min-height: 45%;
+    overflow-y: hidden;
 }
 
 .albumCard {
@@ -12,6 +13,7 @@
     align-items: center;
     text-overflow: ellipsis;
     margin: 5px;
+    padding: 5px;
 
     span {
         width: 100%;
@@ -22,12 +24,13 @@
 }
 
 .albumCard:hover {
-    background: rgb(25, 25, 25);
+    background: rgb(29, 29, 29);
+    border-radius: 10px;
 }
 
 .albumImg {
-    width: 190px;
-    height: 190px;
+    width: 180px;
+    height: 180px;
     border-radius: 5px;
     margin: 5px;
 }
