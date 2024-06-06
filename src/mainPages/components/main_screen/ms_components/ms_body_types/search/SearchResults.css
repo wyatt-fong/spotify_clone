@@ -11,3 +11,71 @@
     padding: 0 0 0 10px;
     margin: 10px 0;
 }
+
+.searchCard {
+    display: flex;
+    max-width: 190px;
+    height: 250px;
+    flex-direction: column;
+    background: inherit;
+    align-items: center;
+    text-overflow: ellipsis;
+    margin: 5px;
+    padding: 5px;
+
+    span {
+        width: 100%;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+.searchCard:hover {
+    background: rgb(32, 32, 32);
+    border-radius: 10px;
+}
+
+.cardImg {
+    width: 180px;
+    height: 180px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+
+.cardTitle {
+    width: 80%;
+    padding: 2.5px 0 2.5px 5px;
+    font-size: 16px;
+    align-self: baseline;
+    font-weight: 400;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+.cardDetails {
+    color: rgb(138, 138, 138);
+    padding: 2.5px 5px;
+    font-size: 14px;
+    align-self: baseline;
+    font-weight: 200;
+    width: 80%;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+.s-row-container {
+    width: 100%;
+    min-height: 45%;
+    overflow-y: hidden;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    margin: 0 5px 0 5px;
+}

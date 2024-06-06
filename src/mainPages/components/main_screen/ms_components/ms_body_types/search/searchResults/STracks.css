@@ -16,7 +16,7 @@
 }
 
 .song-cont:hover {
-    background: rgb(58, 58, 58);
+    background: rgb(45, 45, 45);
 
     #info, #ct {
         color: white;

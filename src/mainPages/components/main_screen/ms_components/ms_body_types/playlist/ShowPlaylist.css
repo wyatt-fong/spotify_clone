@@ -2,6 +2,38 @@
     height:105%;
     overflow:hidden;
     overflow-y: scroll;
+
+    span {
+        font-size: 14px;
+        font-weight: 500;
+        height: 19px;
+        padding-left: 2px;
+    }
+    
+    h1 {
+        font-size: 64px;
+        margin: 0;
+        height: 96px;
+    }
+
+    p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: medium;
+        line-height: normal;
+        margin: 0;
+        padding: 0;
+    }
+
+    button {
+        border: none;
+        cursor: pointer;
+        opacity: 1;
+        width:fit-content;
+        height: fit-content;
+        background: inherit;
+    }
+    
 }
 
 .playlist-img {
@@ -15,6 +47,7 @@
     display: flex;
     align-items: center;
     padding-left: 24px;
+    margin: 8px 0 0 0;
 }
 
 .ph-details {
@@ -24,18 +57,6 @@
     margin-left: 20px;
 }
 
-span {
-    font-size: 14px;
-    font-weight: 500;
-    height: 19px;
-    padding-left: 2px;
-}
-
-h1 {
-    font-size: 64px;
-    margin: 0;
-    height: 96px;
-}
 
 .specifics {
     display: flex;
@@ -44,23 +65,6 @@ h1 {
     padding-left: 2px;
 }
 
-p {
-    font-style: normal;
-    font-weight: normal;
-    font-size: medium;
-    line-height: normal;
-    margin: 0;
-    padding: 0;
-}
-
-button {
-    border: none;
-    cursor: pointer;
-    opacity: 1;
-    width:fit-content;
-    height: fit-content;
-    background: inherit;
-}
 
 .flexbox {
     display: flex;

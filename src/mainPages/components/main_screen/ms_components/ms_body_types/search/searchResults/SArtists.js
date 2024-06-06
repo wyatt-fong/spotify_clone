@@ -1,8 +1,7 @@
-import './SearchArtists.css';
+import './SArtists.css';
 
-function SearchArtists(props) {
+function SArtists(props) {
     const artists = props.props;
-    console.log(artists.items[0]);
 
     const artistDisp = artists?.items ? artists.items.map((item) => {
         const imgURL = item?.images[0]?.url ? item.images[0].url : "";
@@ -27,4 +26,4 @@ function SearchArtists(props) {
     )
 }
 
-export default SearchArtists;
+export default SArtists;

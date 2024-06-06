@@ -17,19 +17,19 @@ function HomeSearchToggle() {
         chooseDisplay(<SearchPage/>);
         choosePlaylist(null);
     }
-
+    
     return (
         <div className="main-nav">
             <ul> 
                 <li style={{paddingBottom: 5, paddingTop: 10}}>
                     <div className='choice' onClick={goHome}>
-                        <button className='btn'><HouseFill /></button> {/* Delete later to add symbol */}
+                        <button className='btn'><HouseFill /></button> 
                         <span>Home</span>
                     </div>
                 </li>
                 <li style={{paddingTop: 12}}>
                     <div className='choice' onClick={goSearch}>
-                        <button className='btn'><Search/></button> {/* Delete later to add symbol */}
+                        <button className='btn'><Search/></button> 
                         <span>Search</span>
                     </div>
                 </li>

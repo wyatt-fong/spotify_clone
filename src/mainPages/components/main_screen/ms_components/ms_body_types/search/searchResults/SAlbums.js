@@ -1,7 +1,6 @@
-import './SearchAlbums.css'; 
 import { Dot } from 'react-bootstrap-icons';
 
-function SearchAlbums(props) {
+function SAlbums(props) {
     const albums = props.props;
 
     const albumItems = albums?.items ? albums.items.map((item) => {
@@ -11,23 +10,23 @@ function SearchAlbums(props) {
         const albumTitle = item?.name ? item.name : "";
 
         return (
-            <div className='albumCard'>
-                <img src={imgURL} alt="Album Img" className='albumImg'/>
-                <span id="albumTtle">{albumTitle}</span>
-                <span id="albumDetails">{relDate}<span className="dot"><Dot/></span><a>{albumArtist}</a></span>
+            <div className='searchCard' key={item.id}>
+                <img src={imgURL} alt="Album Img" className='cardImg'/>
+                <span class="cardTitle">{albumTitle}</span>
+                <span class="cardDetails">{relDate}<span className="dot"><Dot/></span>{albumArtist}</span>
             </div>
         )
 
     }) : null;
 
     return (
-        <div className="s-album-container">
-            <h2 className='searchTitle'>Album</h2>
-            <div className="albums">
+        <div className="s-row-container">
+            <h2 className='searchTitle'>Albums</h2>
+            <div className="content">
                 {albumItems}
             </div>
         </div>
     )
 }
 
-export default SearchAlbums;    
+export default SAlbums;    

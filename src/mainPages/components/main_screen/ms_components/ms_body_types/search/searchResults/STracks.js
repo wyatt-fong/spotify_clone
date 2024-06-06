@@ -1,7 +1,7 @@
-import './SearchTracks.css';
+import './STracks.css';
 import { ExplicitFill, MusicNote, } from 'react-bootstrap-icons';
 
-function SearchTracks(props) {
+function STracks(props) {
     const songs = props.props;
     const songItems = songs?.items ? songs.items.slice(0, 5).map((item) => {
         var artistNames = "";
@@ -57,4 +57,4 @@ function SearchTracks(props) {
 
 }
 
-export default SearchTracks;
+export default STracks;
