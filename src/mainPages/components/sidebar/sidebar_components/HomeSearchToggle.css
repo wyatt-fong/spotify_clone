@@ -26,9 +26,7 @@ li {
     flex-direction: row;
     align-items: center;
     text-decoration: none;
-    color: white;
     width: 90%;
-    opacity: 70%;
     cursor: pointer;
 
     span { 
@@ -45,7 +43,18 @@ li {
     }
 }
 
-.choice:hover {
+.inactive:hover {
     opacity: 100%;
+}
+
+.active {
+   color: white;
+   opacity: 90%;
+}
+
+.inactive {
+    color: rgb(189, 189, 189);
+    opacity: 70%;
+
 }
 

@@ -1,5 +1,5 @@
 import './STracks.css';
-import { ExplicitFill, MusicNote, } from 'react-bootstrap-icons';
+import { ExplicitFill, MusicNote, PlayFill} from 'react-bootstrap-icons';
 
 function STracks(props) {
     const songs = props.props;
@@ -32,7 +32,10 @@ function STracks(props) {
         return (
             <div className="song-cont" key={item.id}>
                 <div id="song-abstr">
-                    {icon}
+                    <div className='track-img'>
+                        {icon}  
+                        <PlayFill id="track-play-icon"/>
+                    </div>
                     <div id="song_det">
                         <p>{item?.name}</p>
                         {artistDisp}

@@ -1,4 +1,4 @@
-import { Dot } from 'react-bootstrap-icons';
+import { Dot, PlayCircleFill } from 'react-bootstrap-icons';
 
 function SEpisodes(props) {
     const episodes = props.props;
@@ -20,7 +20,10 @@ function SEpisodes(props) {
 
         return (
             <div className='searchCard' key={item.id}>
-                <img src={imgURL} alt="Episode Img" className='cardImg'/>
+                <div className="img_cir_hold">
+                    <img src={imgURL} alt="Episode Img" className='cardImg'/>
+                    <PlayCircleFill id="searchPlayIcon"/>
+                </div>
                 <span class="cardTitle">{name}</span>
                 <span class="cardDetails">{date}<Dot/>{duration}</span>
                 

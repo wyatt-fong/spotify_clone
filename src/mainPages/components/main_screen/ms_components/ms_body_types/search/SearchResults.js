@@ -52,7 +52,6 @@ function SearchResults() {
             <SPlaylists props={playlists}/>
             <SEpisodes props={episodes}/>
             <SAudiobook props={audiobooks}/>
-            <SEpisodes props={episodes}/>
         </div>
     );
 }

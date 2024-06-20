@@ -1,4 +1,4 @@
-import { Dot } from 'react-bootstrap-icons';
+import { Dot, PlayCircleFill } from 'react-bootstrap-icons';
 
 function SAlbums(props) {
     const albums = props.props;
@@ -11,7 +11,10 @@ function SAlbums(props) {
 
         return (
             <div className='searchCard' key={item.id}>
-                <img src={imgURL} alt="Album Img" className='cardImg'/>
+                <div class="img_cir_hold">
+                    <img src={imgURL} alt="Album Img" className='cardImg'/>
+                    <PlayCircleFill id="searchPlayIcon"/>
+                </div>
                 <span class="cardTitle">{albumTitle}</span>
                 <span class="cardDetails">{relDate}<span className="dot"><Dot/></span>{albumArtist}</span>
             </div>

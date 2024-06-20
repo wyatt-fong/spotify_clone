@@ -13,6 +13,16 @@
     min-width: 70%;
     margin: 0 0 0 24px;
     font-weight: 500;  
+
+    #track-play-icon {
+        visibility: hidden;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
 
 .song-cont:hover {
@@ -20,6 +30,15 @@
 
     #info, #ct {
         color: white;
+    }
+
+    img {
+        opacity: 45%;
+    }
+
+    #track-play-icon {
+        visibility: visible;
+        
     }
 }
 
@@ -51,6 +70,7 @@
             color: white;
             margin: 0;
         }
+
         span {
             width: calc(80% - 2px);
             display: flex;
@@ -62,8 +82,14 @@
             text-overflow: ellipsis;
             color: rgb(175, 174, 174);
         }
+
+        p:hover, span:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }   
     }
 }
+
 
 .songLength {
     width: 100%; 
@@ -74,6 +100,10 @@
     color: rgb(179, 178, 178);   
 }
 
+.track-img {
+    display: flex;
+    position: relative;
+}
 
 
 #song-alb {

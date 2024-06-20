@@ -1,3 +1,5 @@
+import { PlayCircleFill } from "react-bootstrap-icons";
+
 function SPlaylists(props) {
     const playlists = props.props;
     console.log(playlists);
@@ -9,7 +11,10 @@ function SPlaylists(props) {
 
         return (
             <div className='searchCard'>
-                <img className="cardImg" src={imgURL} alt="img"/>
+                <div className="img_cir_hold">
+                    <img className="cardImg" src={imgURL} alt="img"/>
+                    <PlayCircleFill id="searchPlayIcon"/>
+                </div>
                 <span className="cardTitle">{name}</span>
                 <span className='cardDetails'>By {owner}</span>
             </div>

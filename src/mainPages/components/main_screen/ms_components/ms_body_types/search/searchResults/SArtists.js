@@ -1,4 +1,4 @@
-import './SArtists.css';
+import { PlayCircleFill } from 'react-bootstrap-icons';
 
 function SArtists(props) {
     const artists = props.props;
@@ -8,18 +8,21 @@ function SArtists(props) {
         const name = item?.name ? item.name : "";
 
         return (
-            <div className="artist-cont" key={item.id}>
-                <img id="artist-img" src={imgURL} alt="PFP"/>
-                <span id="artist-name">{name}</span>
-                <span>Artist</span>
+            <div className="searchCard" key={item.id}>
+                <div class="img_cir_hold">
+                    <img class="cardImg" style={{borderRadius:'50%'}} src={imgURL} alt="PFP"/>
+                    <PlayCircleFill id="searchPlayIcon"/>
+                </div>
+                <span class="cardTitle">{name}</span>
+                <span class="cardDetails">Artist</span>
             </div>
         );
     }) : null;
 
     return (
-        <div className='s-artist-container'>
+        <div className='s-row-container'>
             <h2 className='searchTitle'>Artists</h2>
-            <div className='artistCards'>
+            <div className='content'>
                 {artistDisp}
             </div>
         </div>

@@ -1,3 +1,6 @@
+import { PlayCircleFill } from 'react-bootstrap-icons';
+
+
 function SAudiobook(props) {
 
     const audiobooks = props.props;
@@ -9,7 +12,10 @@ function SAudiobook(props) {
 
         return (
             <div className='searchCard' key={item.id}>
-                <img src={imgURL} alt="Audio Img" className='cardImg'/>
+                <div className="img_cir_hold">
+                    <img src={imgURL} alt="Audio Img" className='cardImg'/>
+                    <PlayCircleFill id="searchPlayIcon"/>
+                </div>
                 <span className='cardTitle'>{title}</span>
                 <span className='cardDetails'>{author}</span>
             </div>
