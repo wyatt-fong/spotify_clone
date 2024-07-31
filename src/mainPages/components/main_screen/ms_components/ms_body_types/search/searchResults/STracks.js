@@ -1,8 +1,16 @@
 import './STracks.css';
 import { ExplicitFill, MusicNote, PlayFill} from 'react-bootstrap-icons';
+import { useSpotifyPlayer } from '../../../../../../setters/SpotifyPlayerContext';
 
 function STracks(props) {
     const songs = props.props;
+
+    const {playMusic} = useSpotifyPlayer();
+ 
+    const setCurrPlayer = (item) => {
+        let trackURI = 'spotify:track:' + item;
+        playMusic(trackURI);
+    }
     const songItems = songs?.items ? songs.items.slice(0, 5).map((item) => {
         var artistNames = "";
         if (item?.artists)
@@ -28,9 +36,8 @@ function STracks(props) {
 
         const icon = item?.album?.images[0]?.url ? <img src={item.album.images[0].url} alt=""/> : <MusicNote />;
 
-
         return (
-            <div className="song-cont" key={item.id}>
+            <div className="song-cont" key={item.id} onClick={() => setCurrPlayer(item.id)}> 
                 <div id="song-abstr">
                     <div className='track-img'>
                         {icon}  

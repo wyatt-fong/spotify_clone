@@ -1,10 +1,19 @@
 import { ExplicitFill, MusicNote } from "react-bootstrap-icons";
-import './PlaylistSong.css'
+import { useSpotifyPlayer } from "../../../../../setters/SpotifyPlayerContext";
+import './PlaylistSongs.css'
 
 
 function PlaylistSong(props) {
     const songs = props.props;
     let counter = 0;
+
+    const {playMusic} = useSpotifyPlayer();
+
+    const setCurrPlayer = (item) => {
+        let trackURI = 'spotify:track:' + item;
+        playMusic(trackURI);
+    };
+
     const songItems = songs?.items ? songs.items.map((item) => {
         counter++;
 
@@ -43,7 +52,7 @@ function PlaylistSong(props) {
 
 
         return (
-            <div className="song-container" key={item.id}>
+            <div className="song-container" key={item.id} onClick={() => setCurrPlayer(item.track.id)}>
                 <div id="ct-container">
                     <span id="ct">{counter}</span>
                 </div>

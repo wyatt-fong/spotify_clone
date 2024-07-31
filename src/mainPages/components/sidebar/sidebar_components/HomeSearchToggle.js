@@ -2,8 +2,8 @@ import './HomeSearchToggle.css';
 import Home from '../../main_screen/ms_components/ms_body_types/home/Home.js'
 import SearchPage from '../../main_screen/ms_components/ms_body_types/search/SearchPage.js';
 import { House, HouseFill, Search} from 'react-bootstrap-icons'
-import { useDisplaySetter } from '../../../DisplaySetter';
-import { usePlaylistSetter } from '../../../PlaylistSetter.js';
+import { useDisplaySetter } from '../../../setters/DisplaySetter';
+import { usePlaylistSetter } from '../../../setters/PlaylistSetter.js';
 import { useState } from 'react';
 function HomeSearchToggle() {
     const {chooseDisplay} = useDisplaySetter();

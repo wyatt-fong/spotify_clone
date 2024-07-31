@@ -1,6 +1,6 @@
 import './MSBody.css';
-import { usePlaylistSetter } from '../../../PlaylistSetter';
-import { useDisplaySetter } from '../../../DisplaySetter';
+import { usePlaylistSetter } from '../../../setters/PlaylistSetter';
+import { useDisplaySetter } from '../../../setters/DisplaySetter';
 import React, { lazy, useEffect } from 'react';
 const ShowPlaylist = lazy(() => import('./ms_body_types/playlist/ShowPlaylist'));
 

@@ -1,7 +1,7 @@
 import './ShowPlaylist.css';
 import PlaylistSongs from './PlaylistSongs';
-import { usePlaylistSetter } from '../../../../../PlaylistSetter';
-import { useProfileContext } from '../../../../../ProfileContext';
+import { usePlaylistSetter } from '../../../../../setters/PlaylistSetter';
+import { useProfileContext } from '../../../../../setters/ProfileContext';
 import { Dot, PlayCircleFill, ThreeDots, ListUl, Clock, Hash} from 'react-bootstrap-icons';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -50,7 +50,8 @@ function ShowPlaylist() {
     const playlistImage = playlist?.images && playlist.images.length > 0 ? playlist.images[0].url : null;
     const profileImage = profile?.images && profile.images?.length > 0 ? profile.images[0].url : null;
     const displayName = playlist?.owner && playlist.owner?.display_name ? playlist.owner.display_name : null;
-    const total = (playlist?.tracks && playlist.tracks.total) ? playlist.tracks.total : null;
+    let total = (playlist?.tracks && playlist.tracks.total) ? playlist.tracks.total : null;
+    total = total > 100 ? 100 : total;
     const playlistOwnerPFP = profileImage ? <img id="ownrPfp" src={profileImage} alt="pfp"></img> : null;
     
 

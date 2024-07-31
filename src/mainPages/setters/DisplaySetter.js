@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import Home from "./components/main_screen/ms_components/ms_body_types/home/Home";
+import Home from "../components/main_screen/ms_components/ms_body_types/home/Home";
 
 const DisplaySetter = createContext();
 
