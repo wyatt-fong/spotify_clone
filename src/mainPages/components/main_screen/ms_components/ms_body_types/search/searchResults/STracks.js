@@ -1,17 +1,17 @@
 import './STracks.css';
+import QueueComponent from '../../../../../queue_component_icon/QueueComponent';
 import { ExplicitFill, MusicNote, PlayFill} from 'react-bootstrap-icons';
 import { useSpotifyPlayer } from '../../../../../../setters/SpotifyPlayerContext';
 
 function STracks(props) {
     const songs = props.props;
 
-    const {playMusic} = useSpotifyPlayer();
+    const {playMusic, addToQueue} = useSpotifyPlayer();
  
     const setCurrPlayer = (item) => {
-        let trackURI = 'spotify:track:' + item;
-        playMusic(trackURI);
+        playMusic(item, 'track');
     }
-    const songItems = songs?.items ? songs.items.slice(0, 5).map((item) => {
+    const songItems = songs?.items ? songs.items.map((item) => {
         var artistNames = "";
         if (item?.artists)
         {
@@ -20,7 +20,6 @@ function STracks(props) {
                 });
                 artistNames = artistNames.slice(0, -2);
         }
-        
 
         var artistDisp = null;
         if (item?.explicit) {
@@ -37,9 +36,9 @@ function STracks(props) {
         const icon = item?.album?.images[0]?.url ? <img src={item.album.images[0].url} alt=""/> : <MusicNote />;
 
         return (
-            <div className="song-cont" key={item.id} onClick={() => setCurrPlayer(item.id)}> 
+            <div className="song-cont" key={item.id} > 
                 <div id="song-abstr">
-                    <div className='track-img'>
+                    <div className='track-img' onClick={() => setCurrPlayer(item.uri)}>
                         {icon}  
                         <PlayFill id="track-play-icon"/>
                     </div>
@@ -50,6 +49,9 @@ function STracks(props) {
                 </div>
                 <div id="song-alb">
                     <span>{item?.album?.name}</span>
+                </div>
+                <div onClick={() => addToQueue(item.uri)}>
+                    <QueueComponent />
                 </div>
                 <div className='pushRight'>
                     <span className="songLength">{duration}</span>

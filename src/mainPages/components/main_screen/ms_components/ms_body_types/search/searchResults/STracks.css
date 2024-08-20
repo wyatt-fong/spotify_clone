@@ -4,6 +4,7 @@
     justify-self: end;
 }
 
+
 .song-cont {
     display: flex;
     align-items: center;
@@ -38,7 +39,6 @@
 
     #track-play-icon {
         visibility: visible;
-        
     }
 }
 
@@ -84,8 +84,9 @@
         }
 
         p:hover, span:hover {
-            text-decoration: underline;
+            /* text-decoration: underline; */
             cursor: pointer;
+            font-weight: bold;
         }   
     }
 }

@@ -10,49 +10,46 @@ function PlaylistSong(props) {
     const {playMusic} = useSpotifyPlayer();
 
     const setCurrPlayer = (item) => {
-        let trackURI = 'spotify:track:' + item;
-        playMusic(trackURI);
+        playMusic(item, 'track');
     };
 
-    const songItems = songs?.items ? songs.items.map((item) => {
+    const songItems = songs?.items ? songs.items.map((item, index) => {
         counter++;
-
+    
+        const uniqueId = `${item.track.id}-${index}`;
+    
         var artistNames = "";
-        if (item?.track?.artists)
-        {
+        if (item?.track?.artists) {
             item.track.artists.forEach(artist => {
-                    artistNames += artist.name + ", ";
-                });
-                artistNames = artistNames.slice(0, -2);
+                artistNames += artist.name + ", ";
+            });
+            artistNames = artistNames.slice(0, -2);
         }
-        
-
+    
         var artistDisp = null;
         if (item?.track?.explicit) {
-            artistDisp = <span><ExplicitFill style={{padding:'0 4px 0 0', color:'rgb(179, 178, 178)'}}/>{artistNames}</span>
+            artistDisp = <span><ExplicitFill style={{padding:'0 4px 0 0', color:'rgb(179, 178, 178)'}}/>{artistNames}</span>;
         } else {
-            artistDisp = <span>{artistNames}</span>
+            artistDisp = <span>{artistNames}</span>;
         }
-
+    
         var ms = item?.track?.duration_ms;
         const min = Math.floor(ms / 60000);
         const sec = ((ms % 60000) / 1000).toFixed(0);
         const duration = min + ":" + (sec < 10 ? '0' : '') + sec;
-
-
+    
         const formatDate = (dateString) => {
             const date = new Date(dateString);
-            const month = date.toLocaleString('default', { month: 'short' }); // Get month in 3 characters
+            const month = date.toLocaleString('default', { month: 'short' });
             const day = date.getDate();
             const year = date.getFullYear();
             return `${month} ${day}, ${year}`;
         };
-
+    
         const icon = item?.track?.album?.images[0]?.url ? <img src={item.track.album.images[0].url} alt=""/> : <MusicNote />;
-
-
+        console.log(item);
         return (
-            <div className="song-container" key={item.id} onClick={() => setCurrPlayer(item.track.id)}>
+            <div className="song-container" key={uniqueId} id={uniqueId} onClick={() => setCurrPlayer(item.track.uri)}>
                 <div id="ct-container">
                     <span id="ct">{counter}</span>
                 </div>
@@ -75,6 +72,7 @@ function PlaylistSong(props) {
             </div>
         );
     }) : null;
+    
 
     return (
         <div>

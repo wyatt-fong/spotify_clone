@@ -5,6 +5,7 @@ import { PlaylistSetterProvider } from './setters/PlaylistSetter';
 import { ProfileContextProvider } from './setters/ProfileContext';
 import { DisplaySetterProvider } from './setters/DisplaySetter';
 import { SpotifyPlayerProvider } from './setters/SpotifyPlayerContext';
+import Player from './components/currently_playing_footer/Player';
 
 // Reminder to try and implement the logout button somewhere
 
@@ -17,6 +18,7 @@ function LoggedInPage({logout}) {
                         <ProfileContextProvider>
                                 <SideBar />
                                 <MainScreen logout = {logout}/>
+                                <Player/>
                         </ProfileContextProvider>
                         </DisplaySetterProvider>
                 </PlaylistSetterProvider>

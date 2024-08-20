@@ -5,11 +5,17 @@ import { useProfileContext } from '../../../../../setters/ProfileContext';
 import { Dot, PlayCircleFill, ThreeDots, ListUl, Clock, Hash} from 'react-bootstrap-icons';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useSpotifyPlayer } from '../../../../../setters/SpotifyPlayerContext';
 
 function ShowPlaylist() {
 
     const {playlist} = usePlaylistSetter() || {};
     const { profile, getProfile } = useProfileContext() || {};
+    const {playMusic} = useSpotifyPlayer();
+
+    const playPlaylist = (item) => {
+        playMusic(item, 'playlist');
+    }
     
     useEffect(() => {
         if (playlist) {
@@ -34,6 +40,7 @@ function ShowPlaylist() {
 
     const href = playlist?.tracks.href;
 
+
     useEffect(() => {
         if (playlist){
             axios.get(href, {
@@ -54,6 +61,7 @@ function ShowPlaylist() {
     total = total > 100 ? 100 : total;
     const playlistOwnerPFP = profileImage ? <img id="ownrPfp" src={profileImage} alt="pfp"></img> : null;
     
+    console.log(playlist);
 
     return (
         <div className='playlist-container'>
@@ -73,7 +81,7 @@ function ShowPlaylist() {
             <div className='flexbox' id="outter">
                 <div className='flexbox' style={{width:'98%'}}>
                     <button style={{height:56, display:'flex', alignItems:'center'}}>
-                        <PlayCircleFill id="circleFill"/>
+                        <PlayCircleFill id="circleFill" onClick={() => playPlaylist(playlist.uri)}/>
                     </button>
                     <button id="dots">
                         <ThreeDots/>

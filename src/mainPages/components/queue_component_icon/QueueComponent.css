@@ -1,0 +1,10 @@
+.queueComp {
+    color: #B3B2B2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.queueComp:hover {
+    color: white;
+}

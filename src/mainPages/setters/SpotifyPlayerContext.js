@@ -1,12 +1,13 @@
 // SpotifyPlayerContext.js
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState, useRef } from 'react';
 
 const SpotifyPlayerContext = createContext();
 
 export const SpotifyPlayerProvider = ({ children }) => {
     const [player, setPlayer] = useState(null);
     const [deviceId, setDeviceId] = useState(null);
-    const token = window.localStorage.getItem('token'); // Assume token is set after login
+    const [trackSelected, setTrackSelected] = useState(false);
+    const token = window.localStorage.getItem('token');
 
     useEffect(() => {
         const script = document.createElement('script');
@@ -47,29 +48,176 @@ export const SpotifyPlayerProvider = ({ children }) => {
         };
     }, [token]);
 
-    const playMusic = async (URI) => {
+    useEffect(() => {
+        if (player) {
+            player.addListener('player_state_changed', (state) => {
+                if (!state) {
+                    console.error('Player state is unavailable');
+                }
+            });
+        }
+    }, [player]);
+
+    const playMusic = async (URI, contextType) => {
         if (!deviceId || !token) {
             console.error("Device ID or token not available");
             return;
         }
 
         try {
-            await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`, {
+            let bodyData = {};
+
+            if (contextType === 'track') {
+                bodyData.uris = [URI];
+            } else if (contextType === 'playlist' || contextType === 'album' || contextType === 'artist')  {
+                bodyData.context_uri = URI;
+            } else {
+                console.error("Invalid context type provided");
+                return;
+            }
+
+            const response = await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ uris: [URI] })
-            });
-            console.log('Track is playing.');
+                body: JSON.stringify(bodyData)
+        });
+
+            setTrackSelected(true);
         } catch (error) {
             console.error('Error playing track:', error);
         }
     };
 
+
+    const pauseMusic = async () =>  {
+        try {
+            const response = await fetch(`https://api.spotify.com/v1/me/player/pause`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+    
+            if (response.ok) {
+                console.log("Skipped to next track");
+            } else {
+                const errorData = await response.json();
+                console.error("Error skipping track:", errorData);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
+    const addToQueue = async (uri) => {
+        try {
+            await fetch(`https://api.spotify.com/v1/me/player/queue?uri=${encodeURIComponent(uri)}&device_id=${deviceId}`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            });
+        } catch (error) {
+            console.error('Error adding to queue:', error);
+            alert('An error occurred. Please try again.');
+        }
+    };
+
+    const skipFoward = async () =>  {
+        try {
+            const response = await fetch(`https://api.spotify.com/v1/me/player/next`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+    
+            if (response.ok) {
+                console.log("Skipped to next track");
+            } else {
+                const errorData = await response.json();
+                console.error("Error skipping track:", errorData);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
+    const skipPrevious = async () =>  {
+        try {
+            const response = await fetch(`https://api.spotify.com/v1/me/player/previous`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+    
+            if (response.ok) {
+                console.log("Skipped to next track");
+            } else {
+                const errorData = await response.json();
+                console.error("Error skipping track:", errorData);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
+    const getCurrentTrack = async () => {
+        try {
+            const response = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+    
+            if (response.ok) {
+                const currentTrackData = await response.json();
+                return currentTrackData;
+            } else {
+                console.error("Failed to get current track:", await response.json());
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
+    const getUserQueue = async () => {
+        try {
+            const response = await fetch('https://api.spotify.com/v1/me/player/queue', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+    
+            if (response.ok) {
+                const queueData = await response.json();
+                console.log("User's Queue:", queueData);
+                return queueData;
+            } else {
+                console.error("Failed to get user queue:", await response.json());
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+    
+    
+    
+    
     return (
-        <SpotifyPlayerContext.Provider value={{ playMusic }}>
+        <SpotifyPlayerContext.Provider value={{deviceId, trackSelected, playMusic, pauseMusic, addToQueue, skipFoward, skipPrevious, getCurrentTrack, getUserQueue}}>
             {children}
         </SpotifyPlayerContext.Provider>
     );
