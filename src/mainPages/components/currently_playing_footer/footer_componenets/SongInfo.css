@@ -1,5 +1,5 @@
 .footer-song-info {
-    background: rgb(83, 83, 83);
+    background: inherit;
     width: 20%;
     display: flex;
     align-items: center;

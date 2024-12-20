@@ -8,6 +8,10 @@ function SongInfo() {
 
     const { trackSelected, getCurrentTrack } = useSpotifyPlayer();
 
+    // Need to fix how were are probing for the current track and updating the UI for it
+    // Current method is too taxing because it is constantly fetching the currentTrack API and etc.
+    // In short, change this or the project is basically wraps
+
     useEffect(() => {
         if (!trackSelected) return;
         if (prevSong === currSongInfo) return;
@@ -21,7 +25,7 @@ function SongInfo() {
 
         fetchCurrentTrack();
 
-        const interval = setInterval(fetchCurrentTrack, 100); 
+        const interval = setInterval(fetchCurrentTrack, 1000); 
 
         return () => clearInterval(interval); 
     }, [trackSelected, getCurrentTrack]);

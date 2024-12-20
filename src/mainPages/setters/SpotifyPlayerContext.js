@@ -1,5 +1,5 @@
 // SpotifyPlayerContext.js
-import React, { createContext, useContext, useEffect, useState, useRef } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const SpotifyPlayerContext = createContext();
 
@@ -7,6 +7,7 @@ export const SpotifyPlayerProvider = ({ children }) => {
     const [player, setPlayer] = useState(null);
     const [deviceId, setDeviceId] = useState(null);
     const [trackSelected, setTrackSelected] = useState(false);
+    const [shuffleEnabled, setShuffleEnabled] = useState(false); // Track shuffle state
     const token = window.localStorage.getItem('token');
 
     useEffect(() => {
@@ -53,12 +54,15 @@ export const SpotifyPlayerProvider = ({ children }) => {
             player.addListener('player_state_changed', (state) => {
                 if (!state) {
                     console.error('Player state is unavailable');
+                } else {
+                    setShuffleEnabled(state.shuffle); // Update shuffle state based on player state
                 }
             });
         }
     }, [player]);
 
     const playMusic = async (URI, contextType) => {
+        console.log("attempting to play music");
         if (!deviceId || !token) {
             console.error("Device ID or token not available");
             return;
@@ -66,7 +70,6 @@ export const SpotifyPlayerProvider = ({ children }) => {
 
         try {
             let bodyData = {};
-
             if (contextType === 'track') {
                 bodyData.uris = [URI];
             } else if (contextType === 'playlist' || contextType === 'album' || contextType === 'artist')  {
@@ -75,6 +78,7 @@ export const SpotifyPlayerProvider = ({ children }) => {
                 console.error("Invalid context type provided");
                 return;
             }
+            
 
             const response = await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`, {
                 method: 'PUT',
@@ -83,7 +87,7 @@ export const SpotifyPlayerProvider = ({ children }) => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(bodyData)
-        });
+            });
 
             setTrackSelected(true);
         } catch (error) {
@@ -93,9 +97,10 @@ export const SpotifyPlayerProvider = ({ children }) => {
 
 
     const pauseMusic = async () =>  {
+
         try {
             const response = await fetch(`https://api.spotify.com/v1/me/player/pause`, {
-                method: 'POST',
+                method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
@@ -103,10 +108,10 @@ export const SpotifyPlayerProvider = ({ children }) => {
             });
     
             if (response.ok) {
-                console.log("Skipped to next track");
+                console.log("Paused track");
             } else {
                 const errorData = await response.json();
-                console.error("Error skipping track:", errorData);
+                console.error("Error pausing track:", errorData);
             }
         } catch (error) {
             console.error("Error:", error);
@@ -160,10 +165,10 @@ export const SpotifyPlayerProvider = ({ children }) => {
             });
     
             if (response.ok) {
-                console.log("Skipped to next track");
+                console.log("Went back a track");
             } else {
                 const errorData = await response.json();
-                console.error("Error skipping track:", errorData);
+                console.error("Error reverting track:", errorData);
             }
         } catch (error) {
             console.error("Error:", error);
@@ -212,12 +217,50 @@ export const SpotifyPlayerProvider = ({ children }) => {
             console.error("Error:", error);
         }
     };
+
+    const getPlaybackState = async () => {
+        try {
+            const response = await fetch('https://api.spotify.com/v1/me/player', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
     
-    
+            if (response.ok) {
+                const playbackStateData = await response.json();
+                console.log("Playback State:", playbackStateData);
+                return playbackStateData;
+            } else {
+                console.error("Failed to get playback state:", await response.json());
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
+    const shuffleMusic = async () => {
+        const newShuffleState = !shuffleEnabled; // Toggle shuffle state
+        try {
+            await fetch(`https://api.spotify.com/v1/me/player/shuffle?state=${newShuffleState}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+            setShuffleEnabled(newShuffleState); // Update local shuffle state
+        } catch (error) {
+            console.error("Error toggling shuffle:", error);
+        }
+    };
     
     
     return (
-        <SpotifyPlayerContext.Provider value={{deviceId, trackSelected, playMusic, pauseMusic, addToQueue, skipFoward, skipPrevious, getCurrentTrack, getUserQueue}}>
+        <SpotifyPlayerContext.Provider value={{deviceId, trackSelected, playMusic, pauseMusic, 
+            addToQueue, skipFoward, skipPrevious, getCurrentTrack, getUserQueue, 
+            shuffleMusic, getPlaybackState}}>
             {children}
         </SpotifyPlayerContext.Provider>
     );

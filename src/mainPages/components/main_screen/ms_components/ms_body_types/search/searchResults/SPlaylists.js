@@ -18,21 +18,20 @@ function SPlaylists(props) {
     }
 
     
-    const playlistItems = playlists?.items ? playlists.items.map((item) => {
-        const imgURL = item?.images[0]?.url ? item.images[0].url : "";
-        const name = item?.name ? item.name : "";
-        const owner = item?.owner?.display_name ? item.owner.display_name : "";
-        
+    const playlistItems = playlists?.items ? playlists.items.filter(item => item).map(item => {
+        const imgURL = item?.images?.[0]?.url || ""; // Safely access image URL
+        const name = item?.name || ""; // Safely access name
+        const owner = item?.owner?.display_name || ""; // Safely access owner display name
         return (
             <div className='searchCard' key={item.id} onClick={() => setPlaylist(item)}>
                 <div className="img_cir_hold">
                     <img className="cardImg" src={imgURL} alt="img"/>
-                    <PlayCircleFill id="searchPlayIcon" onClick = {() => playPlaylist(item.uri)}/>
+                    <PlayCircleFill id="searchPlayIcon" onClick={() => playPlaylist(item.uri)} />
                 </div>
                 <span className="cardTitle">{name}</span>
                 <span className='cardDetails'>By {owner}</span>
-            </div>  
-        )
+            </div>
+        );
     }) : null;
 
     return (

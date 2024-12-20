@@ -61,7 +61,6 @@ function ShowPlaylist() {
     total = total > 100 ? 100 : total;
     const playlistOwnerPFP = profileImage ? <img id="ownrPfp" src={profileImage} alt="pfp"></img> : null;
     
-    console.log(playlist);
 
     return (
         <div className='playlist-container'>

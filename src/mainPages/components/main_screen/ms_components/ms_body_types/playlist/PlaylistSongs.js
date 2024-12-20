@@ -13,10 +13,14 @@ function PlaylistSong(props) {
         playMusic(item, 'track');
     };
 
+
     const songItems = songs?.items ? songs.items.map((item, index) => {
+        if (item == null) return null;
         counter++;
+
+        const id = item?.track?.id ? item.track.id : null;
     
-        const uniqueId = `${item.track.id}-${index}`;
+        const uniqueId = `${id}-${index}`;
     
         var artistNames = "";
         if (item?.track?.artists) {
@@ -47,7 +51,6 @@ function PlaylistSong(props) {
         };
     
         const icon = item?.track?.album?.images[0]?.url ? <img src={item.track.album.images[0].url} alt=""/> : <MusicNote />;
-        console.log(item);
         return (
             <div className="song-container" key={uniqueId} id={uniqueId} onClick={() => setCurrPlayer(item.track.uri)}>
                 <div id="ct-container">
