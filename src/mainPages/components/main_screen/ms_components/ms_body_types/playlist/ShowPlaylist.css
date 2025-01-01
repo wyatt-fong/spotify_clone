@@ -41,28 +41,42 @@
     width : 232px;
     border-radius: 5px;
     box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.1);
+    object-fit: cover;
 }
 
 .playlist-header {
     display: flex;
-    align-items: center;
+    align-items: center; /* Vertically centers content */
     padding-left: 24px;
     margin: 8px 0 0 0;
+    gap: 20px; /* Space between image and details */
 }
 
 .ph-details {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center; /* Centers content vertically in its area */
     margin-left: 20px;
+    max-width: inherit; /* Adjust based on available space */
 }
 
+.ph-details h1 {
+    font-size: clamp(1rem, 2.5vw, 2rem); /* Dynamically scales font size */
+    font-weight: bold;
+    margin: 5px 0;
+    max-width: 100%; /* Limit the width */
+    overflow: hidden; /* Hide overflowing text */
+    word-wrap: break-word; /* Allows breaking long words */
+    white-space: normal; /* Allow text to wrap to multiple lines */
+    text-overflow: ellipsis; /* Adds ellipsis for overflow */
+}
 
 .specifics {
     display: flex;
     align-items: flex-end;
     height: 24px;
     padding-left: 2px;
+    gap: 10px; /* Space between specifics items */
 }
 
 
