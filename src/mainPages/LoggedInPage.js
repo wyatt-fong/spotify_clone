@@ -1,3 +1,4 @@
+import React from 'react';
 import SideBar from './components/sidebar/Sidebar';
 import MainScreen from './components/main_screen/MainScreen';
 import './LoggedInPage.css';
