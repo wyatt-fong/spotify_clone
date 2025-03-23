@@ -6,7 +6,7 @@ function App() {
     const CLIENT_ID = "d806ac9d002f4c05b35283e0675d5a9e"
     const REDIRECT_URI = window.location.href.includes('localhost') 
     ? "http://localhost:3000" 
-    : "https://<your-github-username>.github.io/<repo-name>";
+    : "https://wyatt-fong.github.io/spotify_clone";
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
     const RESPONSE_TYPE = "token"
     const SCOPE = "user-modify-playback-state user-read-currently-playing streaming user-read-playback-state user-read-private user-library-read user-read-recently-played playlist-read-private playlist-read-collaborative";
