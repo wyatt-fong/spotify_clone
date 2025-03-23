@@ -41,10 +41,8 @@ function App() {
         <div>
             {(!token) ? (   
                 <div className="Login">
-                    <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`}>
-                        <button>
-                            Log In to Spotify
-                        </button> 
+                    <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`}>
+                        <button>Log In to Spotify</button>
                     </a>
                 </div>
             ) : (
