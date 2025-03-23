@@ -3,8 +3,10 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 
 function App() {
-    const CLIENT_ID = "d806ac9d002f4c05b35283e0675d5a9e"
-    const REDIRECT_URI = "http://localhost:3000"
+    const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+    const REDIRECT_URI = process.env.NODE_ENV === 'development'
+    ? process.env.REACT_APP_REDIRECT_URI
+    : process.env.REACT_APP_DEPLOYED_URI;
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
     const RESPONSE_TYPE = "token"
     const SCOPE = "user-modify-playback-state user-read-currently-playing streaming user-read-playback-state user-read-private user-library-read user-read-recently-played playlist-read-private playlist-read-collaborative";
@@ -12,20 +14,24 @@ function App() {
     const [token, setToken] = useState("")
 
     useEffect(() => {
-        const hash = window.location.hash
-        let token = window.localStorage.getItem("token")
-        if (token && hash) {
-            window.localStorage.clear();
-        }
-        
-        if (!token && hash) {
-            token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
+        const hash = window.location.hash;
+        let token = window.localStorage.getItem("token");
 
-            window.location.hash = ""
-            window.localStorage.setItem("token", token)
-            setToken(token)
+        if (token && hash) {
+          window.localStorage.removeItem("token");
+          token = null;
         }
-    }, []);
+      
+        if (!token && hash) {
+          token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token"))?.split("=")[1];
+          
+          if (token) {
+            window.history.pushState({}, document.title, window.location.pathname);
+            window.localStorage.setItem("token", token);
+            setToken(token);
+          }
+        }
+      }, []);
 
     const logout = () => {
         setToken("");
