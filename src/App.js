@@ -11,6 +11,8 @@ function App() {
     const RESPONSE_TYPE = "token"
     const SCOPE = "user-modify-playback-state user-read-currently-playing streaming user-read-playback-state user-read-private user-library-read user-read-recently-played playlist-read-private playlist-read-collaborative";
 
+    const authUrl = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=${RESPONSE_TYPE}&scope=${encodeURIComponent(SCOPE)}`;
+    
     const [token, setToken] = useState("")
 
     useEffect(() => {
@@ -41,7 +43,7 @@ function App() {
         <div>
             {(!token) ? (   
                 <div className="Login">
-                    <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`}>
+                    <a href={authUrl}>
                         <button>Log In to Spotify</button>
                     </a>
                 </div>
