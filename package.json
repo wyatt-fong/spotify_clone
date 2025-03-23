@@ -13,11 +13,14 @@
     "react-scripts": "^3.0.1",
     "web-vitals": "^2.1.4"
   },
+  "homepage": "https://wyatt-fong.github.io/spotify_clone",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
