@@ -11,7 +11,7 @@ function App() {
     const RESPONSE_TYPE = "token"
     const SCOPE = "user-modify-playback-state user-read-currently-playing streaming user-read-playback-state user-read-private user-library-read user-read-recently-played playlist-read-private playlist-read-collaborative";
 
-    const authUrl = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=${RESPONSE_TYPE}&scope=${encodeURIComponent(SCOPE)}`;
+    const authUrl = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=${RESPONSE_TYPE}&scope=${encodeURIComponent(SCOPE)}&show_dialog=true`;
     
     const [token, setToken] = useState("")
 
@@ -36,9 +36,10 @@ function App() {
       }, []);
 
     const logout = () => {
-        setToken("");
-        window.localStorage.removeItem("token");
-    }
+        setToken(""); // Clear token from state
+        window.localStorage.removeItem("token"); // Clear token from localStorage
+        window.location.reload(); // Optional: Reload the page to reset the app
+    };
     return (
         <div>
             {(!token) ? (   
